@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stepSize="1"
+        android:valueFrom="0"
+        android:valueTo="5"
+        app:thumbRadius="5dp" />
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:padding="8dp"
+                android:id="@+id/imageButton_yellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/circle_yellow_faded"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton_blue"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/circle_yellow" />
+
+            <ImageButton
+                android:id="@+id/imageButton_blue"
+                android:padding="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/circle_blue_faded"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton_red"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageButton_yellow"
+                app:layout_constraintTop_toTopOf="@+id/imageButton_yellow"
+                app:srcCompat="@drawable/circle_blue" />
+
+            <ImageButton
+                android:id="@+id/imageButton_red"
+                android:padding="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/circle_red_faded"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton_purple"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageButton_blue"
+                app:layout_constraintTop_toTopOf="@+id/imageButton_blue"
+                app:srcCompat="@drawable/circle_red" />
+
+            <ImageButton
+                android:id="@+id/imageButton_purple"
+                android:padding="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/circle_purple_faded"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton_green"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageButton_red"
+                app:layout_constraintTop_toTopOf="@+id/imageButton_red"
+                app:srcCompat="@drawable/circle_purple" />
+
+            <ImageButton
+                android:id="@+id/imageButton_green"
+                android:padding="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/circle_green_faded"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton_orange"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageButton_purple"
+                app:layout_constraintTop_toTopOf="@+id/imageButton_purple"
+                app:srcCompat="@drawable/circle_green" />
+
+            <ImageButton
+                android:id="@+id/imageButton_orange"
+                android:padding="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/circle_orange_faded"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton_black"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageButton_green"
+                app:layout_constraintTop_toTopOf="@+id/imageButton_green"
+                app:srcCompat="@drawable/circle_orange" />
+
+            <ImageButton
+                android:id="@+id/imageButton_black"
+                android:padding="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/circle_black_faded"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageButton_orange"
+                app:layout_constraintTop_toTopOf="@+id/imageButton_orange"
+                app:srcCompat="@drawable/circle_black" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </HorizontalScrollView>
+
+</LinearLayout>

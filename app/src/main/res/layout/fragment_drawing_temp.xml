@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.example.whiteboard.tools.WhiteboardLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/white_board_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.example.whiteboard.tools.BrushDrawingView
+        android:id="@+id/brush_drawing_view_fragment_drawing"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:visibility="gone"
+        app:backgroundTint="@color/colorAccent"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_add_black_24dp" />
+
+    <LinearLayout
+        android:id="@+id/bottom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/bubble_white"
+        android:elevation="10dp"
+        android:orientation="vertical"
+        app:behavior_hideable="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/comment_properties"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+
+            <LinearLayout
+                android:id="@+id/comment_properties_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.example.whiteboard.MRV
+                    android:id="@+id/commentListRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fadingEdgeLength="15dp"
+                    android:overScrollMode="ifContentScrolls"
+                    android:requiresFadingEdge="vertical"
+                    android:visibility="visible"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/recycler_view_message_send" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/reply_message_edittext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF"
+                        android:hint="Leave a reply"
+                        android:padding="15dp" />
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/send_message_button"
+                        style="@style/Widget.MaterialComponents.FloatingActionButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:backgroundTint="#1F4EFF"
+                        android:visibility="visible"
+                        app:borderWidth="0dp"
+                        app:elevation="0dp"
+                        app:fabCustomSize="25dp"
+                        app:maxImageSize="15dp"
+                        app:srcCompat="@drawable/ic_arrow_upward_black_24dp"
+                        app:tint="#FFFFFF" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/comment_properties_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/comment_info_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/fab_margin"
+                    android:text="Tap anywhere to post a comment"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                    android:textColor="@color/material_on_background_disabled" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/small_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#D1D1D1" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/text_properties"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Type text here" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="15dp"
+                android:gravity="end|right"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/text_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:srcCompat="@drawable/ic_close_black_24dp" />
+
+                <ImageButton
+                    android:id="@+id/text_done"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:srcCompat="@drawable/ic_done_black_24dp" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#D1D1D1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/eraser_properties"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/clear_all_button"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Clear all"
+                app:rippleColor="@color/colorPrimary" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#D1D1D1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/brush_properties"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progress="1"
+                android:max="5"
+                android:padding="16dp"
+                />
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stepSize="1"
+                android:valueFrom="1"
+                android:valueTo="5"
+                app:thumbColor="@color/blue"
+                app:floatingLabel="false"
+                app:thumbRadius="5dp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true"
+                android:scrollbars="none">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/imageButton_yellow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:padding="8dp"
+                        app:layout_constraintEnd_toStartOf="@+id/imageButton_blue"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/circle_yellow" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_blue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:padding="8dp"
+                        app:layout_constraintEnd_toStartOf="@+id/imageButton_red"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/imageButton_yellow"
+                        app:layout_constraintTop_toTopOf="@+id/imageButton_yellow"
+                        app:srcCompat="@drawable/circle_blue" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_red"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:padding="8dp"
+                        app:layout_constraintEnd_toStartOf="@+id/imageButton_purple"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/imageButton_blue"
+                        app:layout_constraintTop_toTopOf="@+id/imageButton_blue"
+                        app:srcCompat="@drawable/circle_red" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_purple"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:padding="8dp"
+                        app:layout_constraintEnd_toStartOf="@+id/imageButton_green"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/imageButton_red"
+                        app:layout_constraintTop_toTopOf="@+id/imageButton_red"
+                        app:srcCompat="@drawable/circle_purple" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_green"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:padding="8dp"
+                        app:layout_constraintEnd_toStartOf="@+id/imageButton_orange"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/imageButton_purple"
+                        app:layout_constraintTop_toTopOf="@+id/imageButton_purple"
+                        app:srcCompat="@drawable/circle_green" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_orange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:padding="8dp"
+                        app:layout_constraintEnd_toStartOf="@+id/imageButton_black"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/imageButton_green"
+                        app:layout_constraintTop_toTopOf="@+id/imageButton_green"
+                        app:srcCompat="@drawable/circle_orange" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:padding="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/imageButton_orange"
+                        app:layout_constraintTop_toTopOf="@+id/imageButton_orange"
+                        app:srcCompat="@drawable/circle_black" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </HorizontalScrollView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#D1D1D1" />
+
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/imageButton_brush"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton_text"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/toolbar_brush" />
+
+                <ImageButton
+                    android:id="@+id/imageButton_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton_eraser"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageButton_brush"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/toolbar_text" />
+
+                <ImageButton
+                    android:id="@+id/imageButton_eraser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton_sticky_note"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageButton_text"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/toolbar_eraser" />
+
+                <ImageButton
+                    android:id="@+id/imageButton_sticky_note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton_comment"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageButton_eraser"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/toolbar_note" />
+
+                <ImageButton
+                    android:id="@+id/imageButton_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton_shapes"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageButton_sticky_note"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/toolbar_comment" />
+
+                <ImageButton
+                    android:id="@+id/imageButton_shapes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton_upload"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageButton_comment"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/toolbar_shapes" />
+
+                <ImageButton
+                    android:id="@+id/imageButton_upload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageButton_shapes"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/toolbar_upload" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </HorizontalScrollView>
+    </LinearLayout>
+
+</com.example.whiteboard.tools.WhiteboardLayout>
+
+
